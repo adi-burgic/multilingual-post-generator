@@ -1,0 +1,13 @@
+{
+  "name": "multilingual-post-generator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Paste a post once, get it adapted in Slovenian, English and French.",
+  "scripts": {
+    "dev": "node --env-file=.env dev-server.js"
+  },
+  "engines": {
+    "node": ">=20.11"
+  }
+}

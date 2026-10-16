@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multilingual Post Generator</title>
+  <meta name="description" content="Paste a post once, get it adapted in Slovenian, English and French." />
+
+  <!-- Same fonts as my portfolio: Space Grotesk for headings, IBM Plex Sans for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+
+    <!-- ========== HEADER ========== -->
+    <header class="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <h1 class="hero__title">Multilingual Post Generator</h1>
+      <p class="hero__tagline">Paste a post in any language. Get it adapted in Slovenian, English and French in one click.</p>
+    </header>
+
+    <!-- ========== INPUT FORM ========== -->
+    <form class="panel" id="postForm" novalidate>
+      <label class="label" for="postText">Your post</label>
+      <textarea
+        id="postText"
+        maxlength="2000"
+        rows="7"
+        placeholder="e.g. Next Friday we're opening the new employee canteen. Lunch is on us on the first day!"
+      ></textarea>
+      <p class="counter"><span id="charCount">0</span> / 2000</p>
+
+      <div class="options">
+        <!-- Tone -->
+        <fieldset class="option-group">
+          <legend class="label">Tone</legend>
+          <label class="chip"><input type="radio" name="tone" value="formal" checked /><span>Formal corporate</span></label>
+          <label class="chip"><input type="radio" name="tone" value="friendly" /><span>Friendly</span></label>
+        </fieldset>
+
+        <!-- Channel -->
+        <fieldset class="option-group">
+          <legend class="label">Channel</legend>
+          <label class="chip"><input type="radio" name="channel" value="linkedin" checked /><span>LinkedIn post</span></label>
+          <label class="chip"><input type="radio" name="channel" value="screen" /><span>Internal digital screen</span></label>
+          <label class="chip"><input type="radio" name="channel" value="general" /><span>General</span></label>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="btn btn--primary" id="generateBtn">Generate</button>
+
+      <!-- Error messages appear here (aria-live so screen readers announce them) -->
+      <p class="error" id="errorMsg" role="alert" aria-live="polite" hidden></p>
+    </form>
+
+    <!-- ========== RESULTS: three columns side by side ========== -->
+    <section class="results" id="results" hidden>
+      <article class="card">
+        <div class="card__head">
+          <h2 class="card__lang">Slovenščina <span>SL</span></h2>
+          <button type="button" class="btn btn--secondary btn--small copy-btn" data-target="out-sl">Copy</button>
+        </div>
+        <p class="card__text" id="out-sl"></p>
+      </article>
+
+      <article class="card">
+        <div class="card__head">
+          <h2 class="card__lang">English <span>EN</span></h2>
+          <button type="button" class="btn btn--secondary btn--small copy-btn" data-target="out-en">Copy</button>
+        </div>
+        <p class="card__text" id="out-en"></p>
+      </article>
+
+      <article class="card">
+        <div class="card__head">
+          <h2 class="card__lang">Français <span>FR</span></h2>
+          <button type="button" class="btn btn--secondary btn--small copy-btn" data-target="out-fr">Copy</button>
+        </div>
+        <p class="card__text" id="out-fr"></p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      Built by <a href="https://adi-burgic.github.io">Adi Burgić</a> · Powered by Groq
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
