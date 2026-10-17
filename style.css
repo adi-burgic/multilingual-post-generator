@@ -32,6 +32,14 @@
   box-sizing: border-box;
 }
 
+/* The hero glow reaches past the screen edges (inset -50vw). Clip it there so
+   the page can't scroll sideways. "clip" rather than "hidden": hidden would turn
+   html/body into scroll containers, clip just cuts off the overflow. */
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
   background: var(--bg-base);
